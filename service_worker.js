@@ -1,3 +1,4 @@
+// Pomodoro Timer Service Worker — Version 1.1.0
 // ============================================
 // Pomodoro Timer Service Worker (MV3)
 // - Owns the timer state and lifecycle (alarms + notifications)
@@ -10,6 +11,7 @@
 // ============================================
 const ALARM_END = 'pomodoro_end';
 const ALARM_BADGE = 'pomodoro_badge';
+const OFFSCREEN_URL = 'offscreen.html';
 const STORAGE_KEYS = {
   state: 'pomodoroState',
   settings: 'pomodoroSettings'
@@ -162,6 +164,27 @@ async function notify(title, message) {
 }
 
 // ============================================
+// Offscreen Audio (Ring on Session End)
+// ============================================
+async function ensureOffscreenAudio() {
+  if (!chrome.offscreen) return;
+  const hasDoc = await chrome.offscreen.hasDocument?.();
+  if (!hasDoc) {
+    await chrome.offscreen.createDocument({
+      url: OFFSCREEN_URL,
+      reasons: [chrome.offscreen.Reason.AUDIO_PLAYBACK],
+      justification: 'Play timer end ring'
+    });
+  }
+}
+
+async function playRing() {
+  if (!chrome.offscreen) return;
+  await ensureOffscreenAudio();
+  chrome.runtime.sendMessage({ type: 'PLAY_RING' });
+}
+
+// ============================================
 // Timer Controls (start/pause/reset/switch)
 // ============================================
 async function startTimer(durationSeconds) {
@@ -223,6 +246,7 @@ async function onSessionEnd() {
     const newCycle = (state.cycleCount + 1) % settings.longBreakEvery;
     const completedToday = state.completedToday + 1;
     await notify('Focus complete', newCycle === 0 ? 'Time for a long break.' : 'Great job! Take a short break.');
+    await playRing();
 
     // Decide next mode
     const nextMode = newCycle === 0 ? 'long_break' : 'short_break';
@@ -245,6 +269,7 @@ async function onSessionEnd() {
   } else {
     // Break ended
     await notify('Break finished', 'Let\'s get back to focus.');
+    await playRing();
     await setState({ mode: 'focus', isRunning: false, startTime: null, endTime: null, remainingSeconds: settings.focus });
     if (settings.autoStartFocus) {
       await startTimer(settings.focus);
@@ -318,6 +343,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
             await setState({ remainingSeconds: durations[s.mode] });
           }
           sendResponse({ ok: true, settings: await getSettings(), state: await getState() });
+          break;
+        case 'PLAY_RING':
+          sendResponse({ ok: true });
           break;
         default:
           sendResponse({ ok: false, error: 'Unknown message type' });

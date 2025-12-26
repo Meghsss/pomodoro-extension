@@ -1,3 +1,7 @@
+// ============================================
+// Popup UI Logic & Interactions
+// ============================================
+
 // Popup script: UI rendering + messaging to service worker
 
 const timeEl = document.getElementById('time');
@@ -265,9 +269,68 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ============================================
+  // Button Accent Color Picker
+  // ============================================
+  const THEME_KEY = "btnAccentColor";
+  const DEFAULT_BTN_ACCENT = "#ef4444";
+  const themeBtn = document.getElementById("themeBtn");
+  const btnColorPicker = document.getElementById("btnColorPicker");
+
+  const applyBtnAccent = (color) => {
+    if (!color) return;
+    document.documentElement.style.setProperty("--btn-accent", color);
+    if (btnColorPicker) btnColorPicker.value = color;
+  };
+
+  const loadAccent = async () => {
+    try {
+      const data = await chrome.storage?.local?.get?.(THEME_KEY);
+      applyBtnAccent(data?.[THEME_KEY] || DEFAULT_BTN_ACCENT);
+    } catch (_) {
+      applyBtnAccent(DEFAULT_BTN_ACCENT);
+    }
+  };
+
+  themeBtn?.addEventListener("click", () => btnColorPicker?.click());
+
+  btnColorPicker?.addEventListener("input", async (e) => {
+    const color = e.target.value;
+    applyBtnAccent(color);
+    try { await chrome.storage?.local?.set?.({ [THEME_KEY]: color }); } catch (_) {}
+  });
+
+  // ============================================
+  // Looping Sound Player
+  // ============================================
+  const playSoundBtn = document.getElementById("playSoundBtn");
+  const loopAudio = new Audio(chrome.runtime.getURL("assets/audio/break_end.mp3"));
+  loopAudio.loop = true;
+  let isLooping = false;
+
+  const updatePlaySoundBtn = () => {
+    if (!playSoundBtn) return;
+    playSoundBtn.textContent = isLooping ? "Stop Sound" : "Play Sound";
+  };
+
+  playSoundBtn?.addEventListener("click", async () => {
+    resumeAudio();
+    playClick();
+    if (!isLooping) {
+      try { await loopAudio.play(); } catch (_) {}
+      isLooping = true;
+    } else {
+      loopAudio.pause();
+      loopAudio.currentTime = 0;
+      isLooping = false;
+    }
+    updatePlaySoundBtn();
+  });
+
+  // ============================================
   // Initialize
   // ============================================
   bindClicks();
+  loadAccent?.();
 });
 
 // ============================================

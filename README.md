@@ -10,6 +10,12 @@ A minimalist, distraction‑free Pomodoro timer that keeps running when the popu
 - Daily completed Pomodoro count
 - Optional: adjust durations, auto‑start next focus/break
 - Dark‑mode friendly, circular progress
+- Focus/short/long timer with auto-start options
+- Glassmorphism UI with animated buttons
+- Theme-able button accent color (palette button)
+- Looping sound tester (Play Sound button)
+- Session end notifications + ring tone
+- Credits dialog with GitHub + PayPal link
 
 ## Project Structure
 - `manifest.json` — MV3 configuration
@@ -35,6 +41,11 @@ A minimalist, distraction‑free Pomodoro timer that keeps running when the popu
 - Use the mode buttons (Focus/Short/Long) to switch modes when stopped.
 - Click Settings (gear) to customize durations and auto‑start behavior.
 - The badge shows minutes remaining while running.
+- Pick mode (Focus/Short/Long) and start/pause/reset as needed.
+- Use the 🎨 button to set button accent color (timer ring stays mode-colored).
+- Click **Play Sound** to toggle the looped `assets/audio/break_end.mp3`.
+- Open settings (⚙️) to adjust durations and auto‑start.
+- View credits (🌐) or donate via PayPal link.
 
 ## Design Decisions
 - **Single end alarm** for reliability; popup calculates its own ticking display based on `endTime`.

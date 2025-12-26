@@ -13,6 +13,7 @@
   --btn-fg: #ffffff;
   --card: #151822;
   --ring: #2a2f3a;
+  --btn-accent: var(--focus);
 }
 
 /* ============================================
@@ -37,10 +38,10 @@ html,body{
    Mode Selection
    ============================================ */
 .mode-switch{ display:flex; gap:8px; margin:8px 0 12px; }
-.mode-btn{ flex:1; padding:8px; border-radius:8px; border:1px solid var(--ring); background:var(--card); color:var(--fg); cursor:pointer; transition: all 0.2s ease; }
-.mode-btn:hover{ background:#1a1f28; transform: translateY(-1px); }
-.mode-btn:active{ transform: translateY(0); }
-.mode-btn.active{ outline:2px solid var(--focus); background:#1a1f28; }
+.mode-btn{ flex:1; padding:8px; border-radius:8px; border:1px solid var(--ring); background:var(--card); color:var(--btn-fg); cursor:pointer; transition: all 0.2s ease; }
+.mode-btn:hover{ background:#1a1f28; transform: translateY(-1px); border-color: var(--btn-accent); color: var(--btn-fg); }
+.mode-btn:active{ transform: translateY(0); border-color: var(--btn-accent); }
+.mode-btn.active{ outline:2px solid var(--btn-accent); background:#1a1f28; border-color: var(--btn-accent); color: var(--btn-fg); }
 
 /* ============================================
    Timer Display
@@ -59,8 +60,8 @@ html,body{
 .btn{ padding:8px 12px; border-radius:8px; border:1px solid var(--ring); background:var(--card); color:var(--fg); cursor:pointer; transition: all 0.2s ease; }
 .btn:hover{ background:#1a1f28; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
 .btn:active{ transform: translateY(0); }
-.btn.primary{ background:var(--focus); border-color:transparent; color:#fff; }
-.btn.primary:hover{ background:#dc2626; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+.btn.primary{ background:var(--btn-accent); border-color:transparent; color:#fff; }
+.btn.primary:hover{ background:var(--btn-accent); transform: translateY(-2px); box-shadow: 0 4px 12px color-mix(in srgb, var(--btn-accent) 40%, transparent); }
 .btn.primary:active{ transform: translateY(0); }
 
 /* ============================================
