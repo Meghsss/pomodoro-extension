@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Pomodoro Timer",
+  "description": "Minimal Pomodoro Timer with focus and break sessions, running reliably in the background.",
+  "version": "1.0.0",
+  "icons": {
+   "16": "assets/icons/pomodoro_16.png",
+   "32": "assets/icons/pomodoro_32.png",
+   "48": "assets/icons/pomodoro_48.png",
+   "128": "assets/icons/pomodoro_128.png"
+  },
+  "action": {
+    "default_title": "Pomodoro Timer",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "offscreen"
+  ],
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "options_ui": {
+    "page": "popup.html",
+    "open_in_tab": false
+  }
+}

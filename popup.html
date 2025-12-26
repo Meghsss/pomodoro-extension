@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================
+       Meta & Styles
+       ============================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- ============================================
+       Main Container
+       ============================================ -->
+  <main class="container">
+    <!-- ============================================
+         Header & Controls
+         ============================================ -->
+    <header class="header">
+      <h1 class="title">Pomodoro Timer</h1>
+      <div>
+        <button class="icon-btn" id="creditsBtn" title="Credits">🌐</button>
+        <button id="settingsBtn" class="icon-btn" title="Settings" aria-label="Open settings">⚙️</button>
+      </div>
+    </header>
+
+    <!-- ============================================
+         Mode Selection Buttons
+         ============================================ -->
+    <section class="mode-switch">
+      <button class="mode-btn" data-mode="focus">Focus</button>
+      <button class="mode-btn" data-mode="short_break">Short</button>
+      <button class="mode-btn" data-mode="long_break">Long</button>
+    </section>
+
+    <!-- ============================================
+         Timer Display
+         ============================================ -->
+    <section class="timer">
+      <svg class="progress" viewBox="0 0 120 120" width="180" height="180" aria-hidden="true">
+        <circle class="bg" cx="60" cy="60" r="54" />
+        <circle class="fg" cx="60" cy="60" r="54" />
+      </svg>
+      <div class="time" id="time">25:00</div>
+      <div id="modeLabel" class="mode-label">Focus</div>
+    </section>
+
+    <!-- ============================================
+         Control Buttons
+         ============================================ -->
+    <section class="controls">
+      <button id="startBtn" class="btn primary">Start</button>
+      <button id="pauseBtn" class="btn">Pause</button>
+      <button id="resetBtn" class="btn">Reset</button>
+    </section>
+
+    <!-- ============================================
+         Statistics
+         ============================================ -->
+    <section class="stats">
+      <div class="stat">
+        <span class="stat-label">Today</span>
+        <span class="stat-value" id="completedToday">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Cycle</span>
+        <span class="stat-value" id="cycleInfo">1/4</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       Credits Dialog
+       ============================================ -->
+  <dialog id="creditsDialog">
+    <div class="credits">
+      <h2>Credits</h2>
+      <p>Built by duyhandsome with ❤️ as a Pomodoro Timer extension.</p>
+      <p>Check out the source on <a href="https://github.com/dominhduy09" target="_blank">GitHub</a></p>
+      <p>If you find this useful, you can donate via PayPal:
+        <a href="https://paypal.me/dominhduy09" target="_blank" rel="noopener noreferrer">paypal.me/dominhduy09</a>
+      </p>
+      <div class="close-btn">
+        <button class="btn primary" id="closeCreditsBtn">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============================================
+       Settings Dialog
+       ============================================ -->
+  <dialog id="settingsDialog">
+    <form method="dialog" class="settings">
+      <h2>Settings</h2>
+      <div class="grid">
+        <label>Focus (min)
+          <input id="focusInput" type="number" min="0.1" step="0.01" max="180" />
+        </label>
+        <label>Short break (min)
+          <input id="shortInput" type="number" min="0.1" step="0.01" max="60" />
+        </label>
+        <label>Long break (min)
+          <input id="longInput" type="number" min="0.1" step="0.01" max="60" />
+        </label>
+        <label>Long break every
+          <input id="everyInput" type="number" min="2" max="12" />
+        </label>
+        <label class="row">
+          <input id="autoBreaks" type="checkbox" /> Auto start breaks
+        </label>
+        <label class="row">
+          <input id="autoFocus" type="checkbox" /> Auto start focus
+        </label>
+      </div>
+      <p id="settingsError" class="form-error" role="alert" aria-live="assertive"></p>
+      <menu class="actions">
+        <button id="saveSettings" class="btn primary">Save</button>
+        <button id="closeSettings" class="btn">Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <!-- ============================================
+       Scripts
+       ============================================ -->
+  <script src="popup.js"></script>
+</body>
+</html>

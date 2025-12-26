@@ -1,0 +1,104 @@
+/* ============================================
+   CSS Variables & Root Styles
+   ============================================ */
+:root{
+  color-scheme: light dark;
+  --bg: #0f1115;
+  --fg: #e7e7e9;
+  --muted: #9aa0a6;
+  --focus: #ef4444;
+  --short: #0ea5e9;
+  --long: #22c55e;
+  --btn-bg: #1f2430;
+  --btn-fg: #ffffff;
+  --card: #151822;
+  --ring: #2a2f3a;
+}
+
+/* ============================================
+   Base Layout
+   ============================================ */
+html,body{
+  margin:0; padding:0; width:320px; min-height:460px; background:linear-gradient(135deg, rgba(15, 17, 21, 0.85) 0%, rgba(31, 36, 48, 0.9) 100%); backdrop-filter: blur(10px); color:var(--fg);
+  font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.container{ padding:14px; }
+
+/* ============================================
+   Header & Navigation
+   ============================================ */
+.header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.title{ font-size:16px; margin:0; font-weight:700; }
+.icon-btn{ background:transparent; border:none; color:var(--fg); cursor:pointer; font-size:18px; transition: all 0.2s ease; }
+.icon-btn:hover{ transform: scale(1.1) rotate(5deg); color:var(--focus); }
+.icon-btn:active{ transform: scale(0.95); }
+
+/* ============================================
+   Mode Selection
+   ============================================ */
+.mode-switch{ display:flex; gap:8px; margin:8px 0 12px; }
+.mode-btn{ flex:1; padding:8px; border-radius:8px; border:1px solid var(--ring); background:var(--card); color:var(--fg); cursor:pointer; transition: all 0.2s ease; }
+.mode-btn:hover{ background:#1a1f28; transform: translateY(-1px); }
+.mode-btn:active{ transform: translateY(0); }
+.mode-btn.active{ outline:2px solid var(--focus); background:#1a1f28; }
+
+/* ============================================
+   Timer Display
+   ============================================ */
+.timer{ display:grid; place-items:center; gap:8px; margin:6px 0 12px; }
+.progress{ transform: rotate(-90deg); }
+.progress .bg{ fill:none; stroke:#2c3140; stroke-width:10; opacity:0.5; }
+.progress .fg{ fill:none; stroke:var(--focus); stroke-width:10; stroke-linecap:round; stroke-dasharray:339.292; stroke-dashoffset:0; transition: stroke-dashoffset .3s ease, stroke .3s ease; }
+.time{ font-size:40px; font-variant-numeric: tabular-nums; letter-spacing:1px; }
+.mode-label{ font-size:12px; color:var(--muted); }
+
+/* ============================================
+   Control Buttons
+   ============================================ */
+.controls{ display:flex; gap:8px; justify-content:center; }
+.btn{ padding:8px 12px; border-radius:8px; border:1px solid var(--ring); background:var(--card); color:var(--fg); cursor:pointer; transition: all 0.2s ease; }
+.btn:hover{ background:#1a1f28; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+.btn:active{ transform: translateY(0); }
+.btn.primary{ background:var(--focus); border-color:transparent; color:#fff; }
+.btn.primary:hover{ background:#dc2626; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
+.btn.primary:active{ transform: translateY(0); }
+
+/* ============================================
+   Statistics
+   ============================================ */
+.stats{ margin-top:12px; display:flex; justify-content:center; gap:20px; }
+.stat{ background:var(--card); border:1px solid var(--ring); border-radius:8px; padding:8px 10px; text-align:center; min-width:86px; }
+.stat-label{ color:var(--muted); font-size:12px; }
+.stat-value{ display:block; font-size:18px; font-weight:600; margin-top:2px; }
+
+/* ============================================
+   Settings Dialog
+   ============================================ */
+#settingsDialog{ border:none; border-radius:12px; padding:0; background:var(--bg); color:var(--fg); width:280px; }
+#settingsDialog::backdrop{ background:#0008; }
+.settings{ padding:14px; }
+.settings h2{ margin:0 0 8px; font-size:16px; text-align:center; }
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.grid .row{ grid-column: 1 / -1; display:flex; align-items:center; gap:8px; }
+.settings input[type="number"]{ width:80%; padding:4px; border-radius:6px; border:1px solid var(--ring); background:var(--card); color:var(--fg); font-size:13px; }
+.form-error{ grid-column: 1 / -1; margin:6px 0 0; color:#f87171; font-size:12px; min-height:16px; }
+.actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:12px; }
+
+/* ============================================
+   Credits Dialog
+   ============================================ */
+#creditsDialog{ border:none; border-radius:12px; padding:0; background:var(--bg); color:var(--fg); width:280px; }
+#creditsDialog::backdrop{ background:#0008; }
+.credits{ padding:14px; text-align:center; }
+.credits h2{ margin:0 0 12px; font-size:16px; }
+.credits p{ margin:0 0 12px; font-size:13px; color:var(--muted); line-height:1.6; }
+.credits a{ color:var(--focus); text-decoration:none; }
+.credits a:hover{ text-decoration:underline; }
+.close-btn{ display:flex; gap:8px; justify-content:center; margin-top:12px; }
+
+/* ============================================
+   Dynamic Colors by Mode
+   ============================================ */
+body.mode-focus .progress .fg{ stroke: var(--focus); }
+body.mode-short_break .progress .fg{ stroke: var(--short); }
+body.mode-long_break .progress .fg{ stroke: var(--long); }
