@@ -42,6 +42,11 @@ html,body{
 .mode-btn:hover{ background:#1a1f28; transform: translateY(-1px); border-color: var(--btn-accent); color: var(--btn-fg); }
 .mode-btn:active{ transform: translateY(0); border-color: var(--btn-accent); }
 .mode-btn.active{ outline:2px solid var(--btn-accent); background:#1a1f28; border-color: var(--btn-accent); color: var(--btn-fg); }
+.templates{ display:flex; gap:6px; margin:8px 0 8px; }
+.template-btn{ flex:1; padding:6px; border-radius:6px; border:1px solid var(--ring); background:var(--card); color:var(--muted); cursor:pointer; transition: all 0.2s ease; font-size:12px; }
+.template-btn:hover{ background:#1a1f28; transform: translateY(-1px); border-color: var(--btn-accent); color: var(--fg); }
+.template-btn:active{ transform: translateY(0); }
+.template-btn.active{ background:#1a1f28; border-color: var(--btn-accent); color: var(--btn-accent); }
 
 /* ============================================
    Timer Display

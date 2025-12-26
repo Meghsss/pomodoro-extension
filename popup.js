@@ -1,5 +1,9 @@
 // ============================================
-// Popup UI Logic & Interactions
+// Popup UI Logic & Interactions — Version 1.2.0
+// - Handles user interactions with timer controls
+// - Manages template presets (Classic 25/5, Short 15/3, Long 50/10, Ultra 90/20)
+// - Syncs with service worker via chrome.runtime.sendMessage
+// - Applies custom theme colors and audio feedback
 // ============================================
 
 // Popup script: UI rendering + messaging to service worker
@@ -327,10 +331,66 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ============================================
+  // Template Presets
+  // ============================================
+  const TEMPLATES = {
+    default: { focus: 25, shortBreak: 5, longBreak: 15 },
+    short: { focus: 15, shortBreak: 3, longBreak: 10 },
+    long: { focus: 50, shortBreak: 10, longBreak: 30 },
+    ultra: { focus: 90, shortBreak: 20, longBreak: 45 }
+  };
+
+  const templateBtns = document.querySelectorAll(".template-btn");
+
+  const applyTemplate = async (templateName) => {
+    const template = TEMPLATES[templateName];
+    if (!template) return;
+
+    try {
+      const settings = {
+        focus: template.focus * 60,
+        shortBreak: template.shortBreak * 60,
+        longBreak: template.longBreak * 60
+      };
+
+      await chrome.runtime.sendMessage({ type: "UPDATE_SETTINGS", settings });
+      
+      // Update active template button
+      templateBtns.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.template === templateName);
+      });
+
+      // Save active template to storage
+      await chrome.storage?.local?.set?.({ activeTemplate: templateName });
+    } catch (e) {
+      console.error("Template apply error:", e);
+    }
+  };
+
+  const loadActiveTemplate = async () => {
+    try {
+      const data = await chrome.storage?.local?.get?.("activeTemplate");
+      const activeTemplate = data?.activeTemplate || "default";
+      templateBtns.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.template === activeTemplate);
+      });
+    } catch (_) {}
+  };
+
+  templateBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      resumeAudio();
+      playClick();
+      applyTemplate(btn.dataset.template);
+    });
+  });
+
+  // ============================================
   // Initialize
   // ============================================
   bindClicks();
-  loadAccent?.();
+  loadAccent();
+  loadActiveTemplate();
 });
 
 // ============================================

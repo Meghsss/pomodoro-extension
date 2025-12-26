@@ -4,7 +4,7 @@
 
 **A minimalist, distraction-free Pomodoro timer that keeps running even when the popup is closed**
 
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/dominhduy09/pomodoro-extension)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/dominhduy09/pomodoro-extension)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-orange.svg)](https://developer.chrome.com/docs/extensions/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -66,6 +66,7 @@ Pomodoro Timer Extension is a Chrome extension (Manifest V3) designed for develo
 - 🔁 **Cycle Management** — Automatic long breaks after configurable focus sessions (default: 4)
 - 💾 **Persistent State** — All settings and progress saved in Chrome storage
 - 🏆 **Badge Counter** — Extension icon shows remaining minutes while running
+- ⚡ **Quick Templates** — Instantly switch between Classic (25/5), Short (15/3), Long (50/10), and Ultra (90/20) timing patterns
 
 ---
 
@@ -89,6 +90,17 @@ Pomodoro Timer Extension is a Chrome extension (Manifest V3) designed for develo
 
 ## 🚀 Usage
 
+### Quick Template Switching
+
+**One-click timing patterns:**
+- **Classic** (25/5/15) — Traditional Pomodoro technique
+- **Short** (15/3/10) — Quick focus bursts for task switching
+- **Long** (50/10/30) — Deep work sessions
+- **Ultra** (90/20/45) — Maximum concentration blocks
+
+Simply click a template button to instantly apply those durations.
+
+### Basic Workflow
 - **Start/Pause/Reset**: Use the popup controls to manage your timer.
 - **Mode Selection**: Choose between Focus, Short Break, and Long Break modes.
 - **Settings**: Click the gear icon to customize your timer durations and auto-start preferences.
@@ -98,6 +110,15 @@ Pomodoro Timer Extension is a Chrome extension (Manifest V3) designed for develo
 ---
 
 ## ⚙️ Configuration
+
+### Template Presets
+
+| Template | Focus | Short Break | Long Break | Best For |
+|----------|-------|-------------|------------|----------|
+| Classic  | 25 min | 5 min | 15 min | Standard Pomodoro |
+| Short    | 15 min | 3 min | 10 min | Quick tasks |
+| Long     | 50 min | 10 min | 30 min | Deep work |
+| Ultra    | 90 min | 20 min | 45 min | Complex projects |
 
 - **Focus Duration**: Set the length of your focus sessions (1-180 minutes).
 - **Short Break Duration**: Configure the duration of short breaks (1-60 minutes).
@@ -126,7 +147,8 @@ Pomodoro Timer Extension is a Chrome extension (Manifest V3) designed for develo
 
 ## 🚧 Roadmap
 
-- [ ] Add customizable Pomodoro cycles (e.g., 50/10, 90/30)
+- [x] Template presets for quick timing changes (Classic/Short/Long/Ultra)
+- [ ] Custom template creator (save your own presets)
 - [ ] Implement task and goal tracking
 - [ ] Provide detailed statistics and reports
 - [ ] Introduce user accounts and cloud sync

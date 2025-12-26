@@ -1,9 +1,10 @@
-// Pomodoro Timer Service Worker — Version 1.1.0
+// Pomodoro Timer Service Worker — Version 1.2.0
 // ============================================
 // Pomodoro Timer Service Worker (MV3)
 // - Owns the timer state and lifecycle (alarms + notifications)
 // - Persists state in chrome.storage
 // - Communicates with popup via chrome.runtime.onMessage
+// - Supports quick-switch templates (Classic, Short, Long, Ultra)
 // ============================================
 
 // ============================================
@@ -18,7 +19,7 @@ const STORAGE_KEYS = {
 };
 
 // ============================================
-// Default Settings
+// Default Settings (Classic 25/5/15 template)
 // ============================================
 const DEFAULT_SETTINGS = {
   focus: 25 * 60,       // seconds
